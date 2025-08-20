@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 
 import re
 
-def format_data(text, session=None):
+def format_data(text, session=None, headers=None):
     with open('data.html', 'w', encoding='utf-8') as file:
         file.write(text)
     soup = BeautifulSoup(text, 'lxml')
@@ -13,8 +13,8 @@ def format_data(text, session=None):
         link = card.find("h2").find("a")['href']
         company = re.sub(r"\s+", " ", card.select("a div span span")[1].text).strip()
         location = card.find(attrs={"data-qa": "vacancy-serp__vacancy-address"})
-        img = BeautifulSoup(session.get(link).text, 'lxml').find('div',attrs={"data-qa": "vacancy-company-logo"})
-        print('img',img)
+        # img = BeautifulSoup(session.get(link, headers=headers).text, 'lxml').find("div", class_="vacancy-company-avatar-wrapper").find_all("img")
+        # print('img',img)
         vacansys.append({
             "title": title,
             "link": link,

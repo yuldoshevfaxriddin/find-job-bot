@@ -1,8 +1,9 @@
 from telegram import InlineQueryResultArticle, InputTextMessageContent, Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import Application, InlineQueryHandler, CommandHandler, ContextTypes
 import request
+import settings
 
-TOKEN = "7975302010:AAFFPGWIhJgSCDhPL70t1ChN3kF27m3HEv8"  # <-- BotFather bergan tokenni shu yerga yozing
+TOKEN = settings.TOKEN  # <-- BotFather bergan tokenni shu yerga yozing
 
 # /start komandasi
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):

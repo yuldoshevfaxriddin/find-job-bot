@@ -31,7 +31,7 @@ def find_data(query)->list:
     session = requests.Session()
     respons = session.get(url, headers=headers)
     if respons.status_code == 200:
-        result = bs4Code.format_data(respons.text, session)
+        result = bs4Code.format_data(respons.text, session,headers=headers)
         return result
         
     return []
